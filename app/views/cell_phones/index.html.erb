@@ -1,0 +1,18 @@
+<div class= "title">
+  <% if @cell_phones.empty? %>
+    <h1>Please Post the First Phone you want Reviewed</h1>
+  <% else %>
+    <h1>Phones to be Reviewed:</h1>
+  <% end %>
+</div>
+
+<div class = "cellphone list">
+  <ul>
+  <% @cell_phones.each do |cell_phone| %>
+  <li> <%= link_to(cell_phone.name, cell_phones_path(cell_phone)) %></li>
+  <% end %>
+</ul>
+</div>
+<%= link_to 'Sign Up', new_user_registration_path %>
+<%= link_to 'Sign In', new_user_session_path %>
+<%= link_to "Add a Cell Phone", new_cell_phone_path %>

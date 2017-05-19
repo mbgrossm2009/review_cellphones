@@ -7,8 +7,15 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
+  <!-- <div class = "sign_up_link">
+  <%= link_to "Sign up", new_user_registration_path %>
+</div> -->
   <body>
+    <% if flash.any? %>
+    <div class="flash">
+      <div class="container">
+        <%= flash[:alert] %>
+        <% end %>
     <%= yield %>
   </body>
 </html>
