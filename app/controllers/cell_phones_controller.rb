@@ -22,5 +22,7 @@ class CellPhonesController < ApplicationController
 
   def show
     @cell_phone = CellPhone.find(params[:id])
+    @review = Review.new
+    @reviews = Review.where(cell_phone_id: params[:id])
   end
 end

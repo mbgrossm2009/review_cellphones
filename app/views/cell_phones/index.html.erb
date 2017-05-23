@@ -9,7 +9,7 @@
 <div class = "cellphone list">
   <ul>
   <% @cell_phones.each do |cell_phone| %>
-  <li> <%= link_to(cell_phone.name, cell_phones_path(cell_phone)) %></li>
+  <li> <%= link_to(cell_phone.name, cell_phone_path(cell_phone)) %></li>
   <% end %>
 </ul>
 </div>

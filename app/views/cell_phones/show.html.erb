@@ -1,1 +1,11 @@
-<% cell_phone.name %>
+<%= @cell_phone.name %>
+<% @cell_phone.reviews.each do |review| %>
+  <%= review.name %>
+<% end %>
+
+
+<%= form_for @review do |f| %>
+  <%= f.label :name %> <%=f.text_field :name %>
+  <%= f.hidden_field :cell_phone_id, :value => @cell_phone.id %>
+  <%= f.submit "Submit Review" %>
+<% end %>
