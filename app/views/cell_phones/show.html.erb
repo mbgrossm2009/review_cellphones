@@ -1,11 +1,22 @@
-<%= @cell_phone.name %>
-<% @cell_phone.reviews.each do |review| %>
-  <%= review.name %>
-<% end %>
+<div class= "phone_info">
+  <%= @cell_phone.name %>
+  <%= @cell_phone.manufacturer %>
+  <% @cell_phone.reviews.each do |review| %>
+    <%= review.name %>
+  <% end %>
+</div>
 
-
-<%= form_for @review do |f| %>
-  <%= f.label :name %> <%=f.text_field :name %>
-  <%= f.hidden_field :cell_phone_id, :value => @cell_phone.id %>
-  <%= f.submit "Submit Review" %>
+<div class= "review_form">
+    <%= form_for @review do |f| %>
+    <%= f.label :name %> <%=f.text_field :name %>
+    <%= f.hidden_field :cell_phone_id, :value => @cell_phone.id %>
+    <%= f.submit "Submit Review" %>
 <% end %>
+</div>
+
+<div class= "edit_delete_links">
+  <% if current_user.id == @cell_phone.user_id %>
+  <%= link_to "Edit the Cell Phone name here", edit_cell_phone_path(@cell_phone) %>
+  <%= button_to "delete", cell_phone_path(@cell_phone), method: :delete %>
+  <% end %>
+</div>

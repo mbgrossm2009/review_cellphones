@@ -1,0 +1,8 @@
+
+<div class = "edit form">
+  <%= form_for(@cell_phone) do |f| %>
+  <%=  f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.submit "Save Changes", class: "btn btn-primary" %>
+  <% end %>
+</div>

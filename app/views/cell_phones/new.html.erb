@@ -1,7 +1,9 @@
 
-
-<%= form_for @cell_phone do |f| %>
-  <%= f.label :name %><%= f.text_field :name %>
-  <%= f.label :manufacturer %>  <%= f.text_field :manufacturer %>
-  <%= f.submit "Create" %>
-<% end %>
+<div class= "new_phone_form">
+  <%= form_for @cell_phone do |f| %>
+    <%= f.label :name %><%= f.text_field :name %>
+    <%= f.label :manufacturer %>  <%= f.text_field :manufacturer %>
+    <%= f.hidden_field :cell_phone_id, :value => @cell_phone.id%>
+    <%= f.submit "Create" %>
+  <% end %>
+</div>

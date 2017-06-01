@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    
     @review = Review.create(cell_phone_id: params["review"]["cell_phone_id"], name: params["review"]["name"])
 
     if @review.save

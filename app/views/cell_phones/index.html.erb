@@ -6,13 +6,15 @@
   <% end %>
 </div>
 
-<div class = "cellphone list">
+<div class = "cellphone_list">
   <ul>
   <% @cell_phones.each do |cell_phone| %>
   <li> <%= link_to(cell_phone.name, cell_phone_path(cell_phone)) %></li>
   <% end %>
-</ul>
+ </ul>
 </div>
-<%= link_to 'Sign Up', new_user_registration_path %>
-<%= link_to 'Sign In', new_user_session_path %>
-<%= link_to "Add a Cell Phone", new_cell_phone_path %>
+
+
+<% if @cell_phones.blank? %>
+  <h4>There are no cell phones containing the term <%= params[:search] %>.</h4>
+<% end %>
