@@ -15,7 +15,6 @@ class CellPhonesController < ApplicationController
   end
 
   def create
-
     @cell_phone = CellPhone.create(name: params["cell_phone"]["name"], manufacturer: params["cell_phone"]["manufacturer"], user_id: current_user.id)
     if @cell_phone.save
       flash[:alert] = "You have successfully created a phone!"
@@ -47,7 +46,6 @@ class CellPhonesController < ApplicationController
   end
 
   def destroy
-
     @cell_phone = CellPhone.find(params[:id])
     @cell_phone.destroy
     flash[:alert] = "Cell Phone has been deleted"
@@ -55,13 +53,14 @@ class CellPhonesController < ApplicationController
   end
 
   def upvote
-  @cell_phone = CellPhone.find(params[:id])
-  @cell_phone.votes.create
-  redirect_to(cell_phones_path)
-end
-    private
+    @cell_phone = CellPhone.find(params[:id])
+    Vote.create(cell_phone: @cell_phone, user: current_user)
+    redirect_to(cell_phones_path)
+  end
+
+  private
 
   def cell_phone_params
-        params.require(:cell_phone).permit(:body, :user_id, :name, :manufacturer)
+    params.require(:cell_phone).permit(:body, :user_id, :name, :manufacturer)
   end
 end

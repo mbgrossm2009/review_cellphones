@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :cell_phones do
     member do
-    post 'upvote'
+      post 'upvote'
+    end
   end
-end
   resources :reviews
 
   root to: 'cell_phones#index'
