@@ -53,6 +53,12 @@ class CellPhonesController < ApplicationController
     flash[:alert] = "Cell Phone has been deleted"
     redirect_to cell_phones_path
   end
+
+  def upvote
+  @cell_phone = CellPhone.find(params[:id])
+  @cell_phone.votes.create
+  redirect_to(cell_phones_path)
+end
     private
 
   def cell_phone_params

@@ -18,11 +18,11 @@
 body {
   background-color: lightblue;
 }
-
+/*
 .title {
 
 text-align: center;
-margin-bottom: 50px;
+padding-bottom: 50px;
 }
 
 .links {
@@ -35,7 +35,15 @@ margin-bottom: 50px;
   list-style-type: none;
 }
 
+.phone_info {
+  margin-left: 400px;
+}
+
 .search_form {
 
-  margin-left: 850px;
+
 }
+
+.cell_phone {
+font-size: 20px;
+}*/
