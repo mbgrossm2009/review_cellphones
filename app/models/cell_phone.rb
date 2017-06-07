@@ -1,5 +1,6 @@
 class CellPhone < ApplicationRecord
   validates :name, length: { minimum: 4}
+  validates :manufacturer, presence: true
   belongs_to :user, optional: true
   has_many :reviews
   has_many :votes, dependent: :destroy

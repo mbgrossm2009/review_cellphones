@@ -3,10 +3,10 @@ require 'pry'
 
 feature "view a cell phones show page" do
  let!(:cell_phone) {FactoryGirl.create(:cell_phone)}
+ let(:user) {FactoryGirl.create(:user)}
 
   scenario "view a show page" do
-    @user = FactoryGirl.create(:user)
-    sign_in @user, scope: :user
+    sign_in user
     visit cell_phone_path(cell_phone)
 
 

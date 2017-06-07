@@ -38,7 +38,7 @@ class CellPhonesController < ApplicationController
   def update
     @cell_phone = CellPhone.find(params[:id])
     if @cell_phone.update_attributes(cell_phone_params) && current_user == @cell_phone.user
-      flash[:notice] = "CellPhone Successfully Updated"
+      flash[:alert] = "Cell Phone Successfully Updated"
       redirect_to cell_phones_path
     else
       render 'edit'
