@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :cell_phones do
     member do
       post 'upvote'
+      post 'downvote'
     end
   end
   resources :reviews

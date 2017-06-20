@@ -58,6 +58,12 @@ class CellPhonesController < ApplicationController
     redirect_to(cell_phones_path)
   end
 
+  def downvote
+    @cell_phone = CellPhone.find(params[:id])
+    Downvote.create(cell_phone: @cell_phone, user: current_user)
+    redirect_to(cell_phones_path)
+  end
+  
   private
 
   def cell_phone_params

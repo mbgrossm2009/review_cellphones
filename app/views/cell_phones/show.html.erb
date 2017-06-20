@@ -1,13 +1,15 @@
 <div class= "phone_info">
   <p class= "cell_phone">Cell Phone Name: <%= @cell_phone.name %></p>
   <p class= "cell_phone">Cell Phone Manufacturer: <%= @cell_phone.manufacturer %></p>
-
- Reviews:
-
-  <% @cell_phone.reviews.each do |review| %>
-    <%= review.name %>
-  <% end %>
 </div>
+
+
+<ul class = "review_list">
+  <b class = "Reviews"> Reviews:</b>
+  <% @cell_phone.reviews.each do |review| %>
+    <li> <%= review.name %> </li>
+  <% end %>
+</uL>
 <p></p>
 
 <div class= "review_form">

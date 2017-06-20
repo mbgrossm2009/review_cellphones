@@ -7,24 +7,47 @@
 </div>
 
 
-<% if @cell_phones.blank? %>
-  <h4>There are no cell phones containing the term <%= params[:search] %>.</h4>
-<% end %>
+  <div class = "table">
+    <% @cell_phones.each do |cell_phone| %>
+      <div class= "cell_phone_info">
+        <div><%= link_to(cell_phone.name, cell_phone_path(cell_phone))%></div>
+        <div><%= button_to '+1', upvote_cell_phone_path(cell_phone), method: :post %></div>
+        <div><%= button_to '-1', downvote_cell_phone_path(cell_phone), method: :post %></div>
+          <%= cell_phone.votes.count - cell_phone.downvotes.count %>
 
-<% @cell_phones.each do |cell_phone| %>
-  <tr>
-    <td><%= link_to(cell_phone.name, cell_phone_path(cell_phone))%></td>
-    <td><%= button_to '+1', upvote_cell_phone_path(cell_phone), method: :post %></td>
-    <td><%= cell_phone.votes.count %> Votes </td>
-    <td><%= link_to 'Show', cell_phone %></td>
-    <td><%= link_to 'Edit', edit_cell_phone_path(cell_phone) %></td>
-    <td><%= link_to 'Destroy', cell_phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-``
+
+        Total votes: <%= cell_phone.votes.count - cell_phone.downvotes.count %>
+        <div><%= link_to 'Show', cell_phone %></div>
+        <div><%= link_to 'Edit Phone Name', edit_cell_phone_path(cell_phone) %></div>
+        <%if current_user.admin%> <div><%= link_to 'Destroy Phone', cell_phone, method: :delete, data: { confirm: 'Are you sure?' } %> <%end%></div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <!-- <div class="table">
+    <% @cell_phones.each do |cell_phone| %>
+      <div class="cell_phone_info row">
+        <div class="small-12 small-centered columns"><%= link_to(cell_phone.name, cell_phone_path(cell_phone))%></div>
+      </div>
+      <div class="row">
+        <div class="small-12 small-centered columns"><%= link_to 'Show', cell_phone %></div>
+        <div class="small-12 small-centered columns"><%= link_to 'Edit', edit_cell_phone_path(cell_phone) %></div>
+        <div class="small-12 small-centered columns"><%= link_to 'Destroy', cell_phone, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      </div>
+    <% end %>
+  </div> -->
+
+
 <div class="search_form">
   <%= form_tag(cell_phones_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Cell Phones" %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
+
+
+  <% if @cell_phones.blank? %>
+    <h4>There are no cell phones containing the term <%= params[:search] %>.</h4>
+    <% end %>
+
 </div>

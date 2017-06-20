@@ -11,11 +11,21 @@ feature 'user successfully can edit his or hers own cell phone' do
        fill_in "Name", with: "Iphone 8"
        click_button 'Save Changes'
 
-        expect(page).to have_content("Iphone 8")
+      expect(page).to have_content("Iphone 8")
        expect(page).to have_content("Cell Phone Successfully Updated")
 
      end
+
+
+     scenario 'name can not be blank' do
+        sign_in user
+        visit cell_phone_path(cell_phone)
+        click_link 'Edit the Cell Phone name here'
+        click_button 'Save Changes'
+        expect(page).to have_content("Name can't be blank")
+        save_and_open_page
    end
+ end
 
 
 # save_and_open_page

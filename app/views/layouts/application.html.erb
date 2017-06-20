@@ -5,6 +5,7 @@
     <title>ReviewCellphones</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css"> -->
     <%= javascript_include_tag 'application' %>
   </head>
 
@@ -15,8 +16,8 @@
       <li> <%= link_to "Add a Cell Phone", new_cell_phone_path %></li>
       <% else %>
       <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <% end %>
       <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+      <% end %>
     </ul>
   </div>
   <body>
